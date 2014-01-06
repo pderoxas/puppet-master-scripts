@@ -4,9 +4,9 @@
 
 #the base url of the git repositories
 BASE_URL="http://192.168.1.13:8080/paypal-hiera/hieraData"
-CUSTOM_HIERA_DIR="/etc/puppet/hieradata/env/DEV/custom_configs"
+CUSTOM_HIERA_DIR="/etc/puppet/hieradata/env/DEV/store_configs"
 GROUP_HIERA_DIR="/etc/puppet/hieradata/env/DEV/group_configs"
-DEFAULT_HIERA_DIR="/etc/puppet/hieradata/env/DEV/default_configs"
+DEFAULT_HIERA_DIR="/etc/puppet/hieradata/env/DEV/geo_location_configs"
 
 
 #construct the releases url
