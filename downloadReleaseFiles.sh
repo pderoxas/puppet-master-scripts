@@ -18,7 +18,7 @@ function printUsage()
    echo "Usage: downloadReleaseFiles.sh -o <Repo Owner> -r <Repo Name> -t <Release Tag> -d <Directory Path>"
    echo "       -o The owner of the repository    (Required)"
    echo "       -r The name of the repository     (Required)"
-   echo "       -d The repo direcotry             (Required)" 
+   echo "       -d The root repo direcotry        (Required)" 
 }
 
 # read and parse input parameters
