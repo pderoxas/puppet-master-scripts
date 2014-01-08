@@ -1,10 +1,10 @@
 #!/bin/sh
 
-SCRIPTS_DIR=/home/master/paypal/scripts
+SCRIPTS_DIR=/home/master/puppet-master-scripts
 REPO_OWNER=pderoxas
 REPO_NAME=pos-sdk
-REPO_DIR=/home/master/paypal/repos/java
-LOG_FILE=/logs/cronDownloadReleaseFilesJava.log
+REPO_DIR=/repos/java
+LOG_FILE=/home/master/logs/cronDownloadReleaseFilesJava.log
 
 cd $SCRIPTS_DIR
 echo "Downloading Releases..." >> $LOG_FILE
