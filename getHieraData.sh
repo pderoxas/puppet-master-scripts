@@ -8,6 +8,8 @@ STORE_HIERA_DIR="/etc/puppet/hieradata/env/DEV/store_configs"
 GROUP_HIERA_DIR="/etc/puppet/hieradata/env/DEV/group_configs"
 LOCATION_HIERA_DIR="/etc/puppet/hieradata/env/DEV/geo_location_configs"
 
+echo "Using web service URL: $BASE_URL"
+
 function saveHieraFiles() {
   curHieraDir=$1
   curData=$2
@@ -23,6 +25,7 @@ function saveHieraFiles() {
   do
     curConfig=$(echo $curData | jq ".[${i}]")
     curId=$(echo $curConfig | jq ".id" | sed -e 's/^"//'  -e 's/"$//')
+    echo "Saving hiera data to $curHieraDir/$curId.json"
     echo $curConfig>$curHieraDir/$curId.json
   done
 
@@ -30,7 +33,7 @@ function saveHieraFiles() {
 
 #construct the releases url
 hiera_url="$BASE_URL"
-echo "Hiera URL: $hiera_url"
+#echo "Hiera URL: $hiera_url"
 hiera_data=$(curl $hiera_url)
 store_data=$(echo $hiera_data | jq ". | .storeConfigs")
 group_data=$(echo $hiera_data | jq ". | .groupConfigs")
