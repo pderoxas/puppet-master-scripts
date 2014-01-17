@@ -3,7 +3,7 @@
 #http://stedolan.github.io/jq/
 
 #the base url of the git repositories
-BASE_URL="http://192.168.1.5:8080/paypal-hiera/hieraData"
+BASE_URL="http://192.168.1.6:3000"
 STORE_HIERA_DIR="/etc/puppet/hieradata/env/DEV/store_configs"
 GROUP_HIERA_DIR="/etc/puppet/hieradata/env/DEV/group_configs"
 LOCATION_HIERA_DIR="/etc/puppet/hieradata/env/DEV/geo_location_configs"
@@ -24,7 +24,7 @@ function saveHieraFiles() {
   for ((i = 0; i <= numberOfConfigs - 1; i++))
   do
     curConfig=$(echo $curData | jq ".[${i}]")
-    curId=$(echo $curConfig | jq ".id" | sed -e 's/^"//'  -e 's/"$//')
+    curId=$(echo $curConfig | jq ".name" | sed -e 's/^"//'  -e 's/"$//')
     echo "Saving hiera data to $curHieraDir/$curId.json"
     echo $curConfig>$curHieraDir/$curId.json
   done
@@ -32,13 +32,18 @@ function saveHieraFiles() {
 }
 
 #construct the releases url
-hiera_url="$BASE_URL"
-#echo "Hiera URL: $hiera_url"
-hiera_data=$(curl $hiera_url)
-store_data=$(echo $hiera_data | jq ". | .storeConfigs")
-group_data=$(echo $hiera_data | jq ". | .groupConfigs")
-location_data=$(echo $hiera_data | jq ". | .locationConfigs")
+locationConfigs_url="$BASE_URL/locationConfigs"
+groupConfigs_url="$BASE_URL/groupConfigs"
+storeConfigs_url="$BASE_URL/storeConfigs"
 
+#hiera_data=$(curl $hiera_url)
+#store_data=$(echo $hiera_data | jq ". | .storeConfigs")
+#group_data=$(echo $hiera_data | jq ". | .groupConfigs")
+#location_data=$(echo $hiera_data | jq ". | .locationConfigs")
+
+location_data=$(curl $locationConfigs_url)
+group_data=$(curl $groupConfigs_url)
+store_data=$(curl $storeConfigs_url)
 
 #echo
 #echo "STORE=$store_data"
