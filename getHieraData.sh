@@ -4,9 +4,9 @@
 
 #the base url of the git repositories
 BASE_URL="http://192.168.1.6:3000"
-STORE_HIERA_DIR="/etc/puppet/hieradata/store_configs"
-GROUP_HIERA_DIR="/etc/puppet/hieradata/group_configs"
-LOCATION_HIERA_DIR="/etc/puppet/hieradata/geo_location_configs"
+STORE_HIERA_DIR="/repos/hieradata/store_configs"
+GROUP_HIERA_DIR="/repos/hieradata/group_configs"
+LOCATION_HIERA_DIR="/repos/hieradata/geo_location_configs"
 
 mkdir -p $STORE_HIERA_DIR
 #mkdir -p $GROUP_HIERA_DIR
